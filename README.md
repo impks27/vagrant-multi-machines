@@ -1,1 +1,4 @@
-"# vagrant-multi-machines" 
+# vagrant-multi-machines
+
+# validate
+vagrant validate
