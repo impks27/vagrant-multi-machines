@@ -6,6 +6,10 @@ Vagrant.configure("2") do |config|
     subconfig.vm.box = BOX_IMAGE
     subconfig.vm.hostname = "k8s-master"
     subconfig.vm.network :private_network, ip: "192.168.1.10"
+    subconfig.vm.provider "virtualbox" do |vb|
+      #vb.memory = "1024"
+      vb.name = "k8s-master"
+    end
   end
   
   (1..NODE_COUNT).each do |i|
@@ -13,6 +17,10 @@ Vagrant.configure("2") do |config|
       subconfig.vm.box = BOX_IMAGE
       subconfig.vm.hostname = "k8s-worker-node-#{i}"
       subconfig.vm.network :private_network, ip: "192.168.1.#{i + 10}"
+      subconfig.vm.provider "virtualbox" do |vb|
+        #vb.memory = "1024"
+        vb.name = "k8s-worker-node-#{i}"
+      end
     end
   end
 
